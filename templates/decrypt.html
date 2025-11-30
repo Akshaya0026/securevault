@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Decrypt a File</h2>
+<form method="POST" enctype="multipart/form-data">
+  <label>Encrypted File (.des.enc):</label><br>
+  <input type="file" name="enc_file" required><br><br>
+
+  <label>Encrypted Key (.key.enc):</label><br>
+  <input type="file" name="enc_key" required><br><br>
+
+  <label>Your Private Key (.pem):</label><br>
+  <input type="file" name="privkey_file" required><br><br>
+
+  <label>Original File Hash (optional):</label><br>
+  <input type="text" name="orig_hash" placeholder="Paste hash here"><br><br>
+
+  <button type="submit">Decrypt</button>
+</form>
+
+{% if decrypted_file %}
+  <h3>Decryption Complete</h3>
+  <p>Decrypted file: <a href="{{ url_for('download', filename=decrypted_file) }}">{{ decrypted_file }}</a></p>
+  <p>Computed Hash: <code>{{ computed_hash }}</code></p>
+  {% if provided_hash %}
+    <p>Provided Hash: <code>{{ provided_hash }}</code></p>
+    {% if computed_hash == provided_hash %}
+      <p style="color:green;">✅ Integrity OK — Hashes Match</p>
+    {% else %}
+      <p style="color:red;">⚠️ Hash Mismatch — File May Be Altered</p>
+    {% endif %}
+  {% endif %}
+{% endif %}
+{% endblock %}

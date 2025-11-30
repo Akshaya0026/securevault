@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Generate RSA Keys</h2>
+<form method="POST">
+  <label>Enter name:</label>
+  <input type="text" name="name" required>
+  <button type="submit">Generate Keys</button>
+</form>
+<h3>Available Keys:</h3>
+<ul>
+  {% for f in files %}
+  <li>{{ f }}</li>
+  {% else %}
+  <li>No keys found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Encrypt a File</h2>
+<form method="POST" enctype="multipart/form-data">
+  <label>Select File:</label><br>
+  <input type="file" name="file" required><br><br>
+
+  <label>Recipient Public Key (.pem):</label><br>
+  <input type="file" name="pubkey_file" required><br><br>
+
+  <button type="submit">Encrypt</button>
+</form>
+
+{% if enc_file %}
+  <h3>Encryption Complete</h3>
+  <p>Encrypted file: <a href="{{ url_for('download', filename=enc_file) }}">{{ enc_file }}</a></p>
+  <p>Encrypted key: <a href="{{ url_for('download', filename=enc_key_file) }}">{{ enc_key_file }}</a></p>
+  <p>File SHA-256: <code>{{ original_hash }}</code></p>
+{% endif %}
+{% endblock %}
