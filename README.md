@@ -15,6 +15,7 @@
 ## 📌 **Overview**
 
 **SecureVault** is a web-based cryptographic application that provides **secure file encryption**, **safe key exchange**, and **data integrity verification**.
+It is a educational model to understand how file encryption and key exchange works
 It uses a **hybrid cryptography model**, combining:
 
 * **DES** → Symmetric file encryption
