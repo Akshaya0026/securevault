@@ -119,8 +119,6 @@ Open in browser:
 
 # 📸 **Screenshots**
 
-> 📌 Add your own screenshots here after running the project
-> *(Upload PNG/JPG in a `screenshots/` folder and link them like this)*
 
 ### 🔹 Homepage
 
